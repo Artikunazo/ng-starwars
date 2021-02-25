@@ -1,0 +1,22 @@
+.row {
+  column-gap: 15px;
+  row-gap: 15px;
+}
+.card {
+  &__movie {
+    padding: 10px;
+  }
+  &__details {
+    width: 70%;
+  }
+  &__makers {
+    font-weight: 500;
+  }
+  &__title:hover{
+    cursor: pointer;
+  }
+}
+
+.mat-card-header {
+  justify-content: center;
+}

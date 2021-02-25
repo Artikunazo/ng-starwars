@@ -1,0 +1,60 @@
+<router-outlet></router-outlet>
+
+<div class="container-liquid">
+  <div class="row">
+    <div class="col justify-self-right">
+      <button mat-button [matMenuTriggerFor]="menu">Sort by <mat-icon>sort</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="sortMovies('episode', true)">Episode # ASC</button>
+        <button mat-menu-item (click)="sortMovies('episode', false)">Episode # DESC</button>
+        <button mat-menu-item (click)="sortMovies('date', true)">Release Date ASC</button>
+        <button mat-menu-item (click)="sortMovies('date', false)">Release Date DESC</button>
+        <button mat-menu-item (click)="sortMovies('original', false)">Original Order</button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="row card__movie">
+    <mat-card
+      class="xs-12 sm-6 md-4 col-3 text-center"
+      *ngFor="let movie of sortedMovies; index as i"
+    >
+      <mat-card-header class="row">
+        <mat-card-title class="col card__title">
+          <span
+            [routerLink]="['/movie', movie.title | titleFriendly | lowercase]"
+            >{{ movie.title }}</span
+          >
+        </mat-card-title>
+        <mat-card-subtitle class="col card__episode">
+          Episode {{ movie.episode_id }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-image [src]="getMovieCover(movie.title | titleFriendly | lowercase)">
+
+      <mat-card-content>
+        <div class="row">
+          <div class="col-6">
+            <p class="card__makers">Director:</p>
+            <p>{{ movie.director }}</p>
+          </div>
+          <div class="col-6">
+            <p class="card__makers">Producer:</p>
+            <p>{{ movie.producer }}</p>
+          </div>
+          <div class="col">
+            <p>Released: {{ movie.release_date | date: "longDate" }}</p>
+            <button
+              mat-raised-button
+              color="primary"
+              class="card__details"
+              [routerLink]="['/movie', movie.title | titleFriendly | lowercase]"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

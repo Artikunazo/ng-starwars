@@ -1,0 +1,73 @@
+<router-outlet></router-outlet>
+
+<div class="container text-center character">
+  <div class="row">
+    <div class="col">
+      <h1>{{ characterSingular?.name }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 xs-12">
+      <h2>Birth Year: <br>{{ characterSingular?.birth_year }}</h2>
+    </div>
+    <div class="col-6 xs-12">
+      <h2>Gender: <br>{{ characterSingular?.gender }}</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 xs-12">
+      <h3>Hair color: <br />{{ characterSingular?.hair_color }}</h3>
+    </div>
+    <div class="col-6 xs-12">
+      <h3>Eye Color: <br />{{ characterSingular?.eye_color }}</h3>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-6 homeworld">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Homeworld </mat-panel-title>
+            <mat-panel-description>
+              {{ homeworldCharacter?.name }}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          
+          <mat-list>
+            <mat-list-item>Population: {{ homeworldDetails['population'] }}</mat-list-item>
+            <mat-list-item>Climate: {{ homeworldDetails['climate'] }}</mat-list-item>
+            <mat-list-item>Gravity: {{ homeworldDetails['gravity'] }}</mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="col-6 films-related">
+      <div class="row">
+        <div class="col">
+          <button
+            mat-raised-button
+            color="primary"
+            class="films-related__button"
+            (mouseover)="showFilms = true"
+            (mouseout)="showFilms = false"
+          >
+            Related films
+          </button>
+        </div>
+        <div class="col" *ngIf="showFilms">
+          <mat-chip-list class="films-related__list">
+            <mat-chip
+              class="films-related__title"
+              *ngFor="let film of relatedFilmsCharacter"
+              >{{ film }}</mat-chip
+            >
+          </mat-chip-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

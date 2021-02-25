@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span [routerLink]="['/home']" matTooltip="Go to home"
+      >Star Wars Movies</span
+    >
+    <span class="spacer"></span>
+    <button mat-icon-button [matBadge]="navCount" matBadgeColor="accent" matTooltip="Navigation history">
+      <mat-icon>remove_red_eye</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

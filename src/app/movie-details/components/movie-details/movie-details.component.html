@@ -1,0 +1,54 @@
+<router-outlet></router-outlet>
+
+
+<div class="container text-center movie">
+  <div class="row">
+    <div class="col">
+      <h1>{{ movie?.title }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img mat-card-image [src]="getMovieCover(movie?.title | titleFriendly | lowercase)">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 xs-12">
+      <h2>Episode: {{ movie?.episode_id }}</h2>
+    </div>
+    <div class="col-6 xs-12">
+      <h2>Released: {{ movie?.release_date | date: "longDate" }}</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 xs-12">
+      <h3>Director: <br />{{ movie?.director }}</h3>
+    </div>
+    <div class="col-6 xs-12">
+      <h3>Producer: <br />{{ movie?.producer }}</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <p class="movie__opening">{{ movie?.opening_crawl }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-center">
+      <h4>Characters Names: </h4>
+      <mat-chip-list aria-label="Character selection" class="characters">
+        <mat-chip
+        class="characters__name"
+          *ngFor="let character of charactersMovie"
+          [routerLink]="['/character', character?.name]"
+          >{{ character?.name }}</mat-chip
+        >
+      </mat-chip-list>
+    </div>
+  </div>
+</div>
