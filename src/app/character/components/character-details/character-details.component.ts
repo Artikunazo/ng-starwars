@@ -18,7 +18,7 @@ export class CharacterDetailsComponent implements OnInit {
   relatedFilmsCharacter = [];
   homeworldCharacter: HomeworldModel;
   homeworldDetails: HomeworldModel[] = [];
-  showFilms: boolean = false;
+  showFilms = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,38 +31,38 @@ export class CharacterDetailsComponent implements OnInit {
   ngOnInit(): void {
     this._navigationService.setNewNavigation();
     this.getCharacterDetails();
-    
+
   }
 
   getCharacterDetails() {
     this.route.params.subscribe((param: Params) => {
-      //Get singular character details
+      // Get singular character details
       this._charactersService.getCharacterDetailsByName(param.name);
       this._charactersService.characterSingular.subscribe((response) => {
         this.characterSingular = response;
 
-        //Get films related
-        for(let element of this.characterSingular?.films) {
-          if(this.relatedFilmsCharacter.length === this.characterSingular.films.length){
+        // Get films related
+        for (const element of this.characterSingular?.films) {
+          if (this.relatedFilmsCharacter.length === this.characterSingular.films.length){
             break;
           }
           this._moviesService.setMovie(element);
           this._moviesService.movie.subscribe((response) => {
-              this.relatedFilmsCharacter?.push(response['title']);
+              this.relatedFilmsCharacter?.push(response.title);
               this.relatedFilmsCharacter = [...new Set(this.relatedFilmsCharacter)];
             });
-        };
+        }
 
-        //Get homeworld of the character
+        // Get homeworld of the character
         this._homeworldService.setHomeWorldCharacter(this.characterSingular.homeworld);
         this._homeworldService.homeworldCharacter.subscribe(response => {
           this.homeworldCharacter = response;
 
-          //Get Homeworld info
+          // Get Homeworld info
           this._homeworldService.setHomeworldDetails(this.homeworldCharacter.name);
           this._homeworldService.homeworld.subscribe(response => {
-            this.homeworldDetails = response
-          })
+            this.homeworldDetails = response;
+          });
         });
       });
     });

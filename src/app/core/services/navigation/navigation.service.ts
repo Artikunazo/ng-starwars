@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class NavigationService {
   navCount = new Subject<number>();
-  realcount: number = 0;
+  realcount = 0;
   constructor() { }
 
   setNewNavigation(){

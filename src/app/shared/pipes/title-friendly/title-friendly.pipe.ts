@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TitleFriendlyPipe implements PipeTransform {
 
   transform(value: string): any {
-    if(typeof value !== undefined || value !== null){
+    if (typeof value !== undefined || value !== null){
       return value.split(' ').join('-');
     }
   }

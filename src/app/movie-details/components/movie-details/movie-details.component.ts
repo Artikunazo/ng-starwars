@@ -15,7 +15,7 @@ import { TitleFriendlyPipe } from '@shared/pipes/title-friendly/title-friendly.p
 })
 export class MovieDetailsComponent implements OnInit {
   movie: MovieModel;
-  movieUrl: string = '';
+  movieUrl = '';
   charactersMovie: CharacterModel[] = [];
   movieCover: string;
 
@@ -25,7 +25,7 @@ export class MovieDetailsComponent implements OnInit {
     private _charactersService: CharactersService,
     private _navigationService: NavigationService,
     private titleFriendlyPipe: TitleFriendlyPipe
-  ) { 
+  ) {
     this.charactersMovie = [];
    }
 
@@ -35,30 +35,30 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   setMovieDetails() {
-    //Get URL params
+    // Get URL params
     this.route.params.subscribe((params: Params) => {
-      //Get movie by title
+      // Get movie by title
       this._moviesService.setMovieByTitle(this.getRealFilmTitle(params.title));
     });
 
     this._moviesService.movie.subscribe((response: MovieModel) => {
       this.movie = response;
 
-      //Get cover film image
+      // Get cover film image
       this.movieCover = this.titleFriendlyPipe
         .transform(this.movie?.title)
         .toLowerCase();
       this.movieCover = this.getMovieCover(this.movieCover);
 
-      //Get characters details
+      // Get characters details
       if (this.charactersMovie.length === 0) {
-        for (let element of this.movie?.characters) {
+        for (const element of this.movie?.characters) {
           this._charactersService.setCharacterDetailsByUrl(element);
-        };
+        }
       }
     });
 
-    //Save caracters on component variable
+    // Save caracters on component variable
     this._charactersService.characters.subscribe((response) => {
       this.charactersMovie = response;
     });

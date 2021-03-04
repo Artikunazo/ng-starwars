@@ -20,7 +20,7 @@ export class MoviesListComponent implements OnInit {
   ) {
     this.sortedMovies = this.moviesList.slice();
   }
-  
+
   ngOnInit(): void {
     this._navigationService.setNewNavigation();
     this.setAllMovies();

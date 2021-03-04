@@ -16,8 +16,8 @@ import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule, 
-    MatButtonModule, 
+    CommonModule,
+    MatButtonModule,
     MatIconModule,
     MatCardModule,
     MatChipsModule,
@@ -29,7 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatMenuModule
   ],
   exports: [
-    MatButtonModule, 
+    MatButtonModule,
     MatIconModule,
     MatCardModule,
     MatChipsModule,

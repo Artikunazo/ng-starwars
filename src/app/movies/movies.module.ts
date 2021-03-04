@@ -4,7 +4,7 @@ import { MoviesListComponent } from './components/movies-list/movies-list.compon
 import { MoviesRoutingModule } from './movies-routing.module';
 import { CoreModule } from '@core/core.module';
 import { MaterialModule } from '@material/material.module';
-import { SharedModule } from "@shared/shared.module";
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [

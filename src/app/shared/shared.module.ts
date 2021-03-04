@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TitleFriendlyPipe } from './pipes/title-friendly/title-friendly.pipe'
+import { TitleFriendlyPipe } from './pipes/title-friendly/title-friendly.pipe';
 
 
 @NgModule({
