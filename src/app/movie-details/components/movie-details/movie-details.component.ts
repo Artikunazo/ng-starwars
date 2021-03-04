@@ -2,10 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CharacterModel } from 'src/app/core/models/character.model';
 
-import { MoviesService } from '../../../core/services/movies/movies.service';
-import { CharactersService } from '../../../core/services/characters/characters.service';
-import { NavigationService } from '../../../core/services/navigation/navigation.service';
-import { MovieModel } from './../../../core/models/movie.model';
+import { MoviesService } from '@core/services/movies/movies.service';
+import { CharactersService } from '@core/services/characters/characters.service';
+import { NavigationService } from '@core/services/navigation/navigation.service';
+import { MovieModel } from '@core/models/movie.model';
+import { TitleFriendlyPipe } from '@shared/pipes/title-friendly/title-friendly.pipe';
 
 @Component({
   selector: 'app-movie-details',
@@ -14,18 +15,19 @@ import { MovieModel } from './../../../core/models/movie.model';
 })
 export class MovieDetailsComponent implements OnInit {
   movie: MovieModel;
-  movieTitle: string = '';
   movieUrl: string = '';
   charactersMovie: CharacterModel[] = [];
+  movieCover: string;
 
   constructor(
     private route: ActivatedRoute,
     private _moviesService: MoviesService,
     private _charactersService: CharactersService,
-    private _navigationService: NavigationService
-  ) {
+    private _navigationService: NavigationService,
+    private titleFriendlyPipe: TitleFriendlyPipe
+  ) { 
     this.charactersMovie = [];
-  }
+   }
 
   ngOnInit(): void {
     this._navigationService.setNewNavigation();
@@ -35,21 +37,25 @@ export class MovieDetailsComponent implements OnInit {
   setMovieDetails() {
     //Get URL params
     this.route.params.subscribe((params: Params) => {
-      this.movieTitle = this.getRealFilmTitle(params.title);
+      //Get movie by title
+      this._moviesService.setMovieByTitle(this.getRealFilmTitle(params.title));
     });
 
-    //Get movie by title
-    this._moviesService.setMovieByTitle(this.movieTitle);
-    this._moviesService.movie.subscribe((response) => {
+    this._moviesService.movie.subscribe((response: MovieModel) => {
       this.movie = response;
 
+      //Get cover film image
+      this.movieCover = this.titleFriendlyPipe
+        .transform(this.movie?.title)
+        .toLowerCase();
+      this.movieCover = this.getMovieCover(this.movieCover);
+
       //Get characters details
-      for(let element of this.movie?.characters) {
-        if(this.charactersMovie.length === this.movie.characters.length){
-          break;
-        }
-        this._charactersService.setCharacterDetailsByUrl(element);
-      };
+      if (this.charactersMovie.length === 0) {
+        for (let element of this.movie?.characters) {
+          this._charactersService.setCharacterDetailsByUrl(element);
+        };
+      }
     });
 
     //Save caracters on component variable
@@ -58,11 +64,11 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
 
-  getMovieCover(title: string){
+  getMovieCover(title: string) {
     return this._moviesService.imagesFilms[title];
   }
 
-  getRealFilmTitle(title: string){
-    return title.split('-').join(' ');;
+  getRealFilmTitle(title: string) {
+    return title.split('-').join(' ');
   }
 }

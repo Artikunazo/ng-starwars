@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { MoviesService } from './../../../core/services/movies/movies.service';
-import { CharactersService } from './../../../core/services/characters/characters.service';
-import { HomeworldService } from './../../../core/services/homeworld/homeworld.service';
-import { NavigationService } from './../../../core/services/navigation/navigation.service';
-import { CharacterModel } from './../../../core/models/character.model';
-import { HomeworldModel } from './../../../core/models/homeworld.model';
+import { MoviesService } from '@core/services/movies/movies.service';
+import { CharactersService } from '@core/services/characters/characters.service';
+import { HomeworldService } from '@core/services/homeworld/homeworld.service';
+import { NavigationService } from '@core/services/navigation/navigation.service';
+import { CharacterModel } from '@core/models/character.model';
+import { HomeworldModel } from '@core/models/homeworld.model';
 
 @Component({
   selector: 'app-character-details',

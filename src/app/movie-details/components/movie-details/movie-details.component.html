@@ -1,6 +1,5 @@
 <router-outlet></router-outlet>
 
-
 <div class="container text-center movie">
   <div class="row">
     <div class="col">
@@ -10,7 +9,7 @@
 
   <div class="row">
     <div class="col">
-      <img mat-card-image [src]="getMovieCover(movie?.title | titleFriendly | lowercase)">
+      <img mat-card-image [src]="movieCover">
     </div>
   </div>
 

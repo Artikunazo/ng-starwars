@@ -13,6 +13,9 @@ import { TitleFriendlyPipe } from './pipes/title-friendly/title-friendly.pipe'
   ],
   exports: [
     TitleFriendlyPipe,
+  ],
+  providers: [
+    TitleFriendlyPipe
   ]
 })
 export class SharedModule { }

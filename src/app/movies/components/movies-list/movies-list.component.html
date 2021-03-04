@@ -22,11 +22,11 @@
         <mat-card-title class="col card__title">
           <span
             [routerLink]="['/movie', movie.title | titleFriendly | lowercase]"
-            >{{ movie.title }}</span
+            >{{ movie?.title }}</span
           >
         </mat-card-title>
         <mat-card-subtitle class="col card__episode">
-          Episode {{ movie.episode_id }}
+          Episode {{ movie?.episode_id }}
         </mat-card-subtitle>
       </mat-card-header>
 
@@ -36,19 +36,19 @@
         <div class="row">
           <div class="col-6">
             <p class="card__makers">Director:</p>
-            <p>{{ movie.director }}</p>
+            <p>{{ movie?.director }}</p>
           </div>
           <div class="col-6">
             <p class="card__makers">Producer:</p>
-            <p>{{ movie.producer }}</p>
+            <p>{{ movie?.producer }}</p>
           </div>
           <div class="col">
-            <p>Released: {{ movie.release_date | date: "longDate" }}</p>
+            <p>Released: {{ movie?.release_date | date: "longDate" }}</p>
             <button
               mat-raised-button
               color="primary"
               class="card__details"
-              [routerLink]="['/movie', movie.title | titleFriendly | lowercase]"
+              [routerLink]="['/movie', movie?.title | titleFriendly | lowercase]"
             >
               Details
             </button>

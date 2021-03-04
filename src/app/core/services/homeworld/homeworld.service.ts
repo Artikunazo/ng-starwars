@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
-import { HomeworldModel } from './../../models/homeworld.model';
+import { HomeworldModel } from '@core/models/homeworld.model';
 
 @Injectable({
   providedIn: 'root',

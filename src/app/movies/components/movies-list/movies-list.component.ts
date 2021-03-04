@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MoviesService } from './../../../core/services/movies/movies.service';
-import { NavigationService } from './../../../core/services/navigation/navigation.service';
-import { MoviesModel } from './../../../core/models/movies.model';
+import { MoviesService } from '@core/services/movies/movies.service';
+import { NavigationService } from '@core/services/navigation/navigation.service';
+import { MoviesModel } from '@core/models/movies.model';
 
 @Component({
   selector: 'app-movies-list',
