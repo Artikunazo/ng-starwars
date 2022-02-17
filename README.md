@@ -2,7 +2,7 @@
 - Angular Material
 - Gary Css (https://www.npmjs.com/package/gary-css)
 
-# FenderTest
+# Ng Startwars (SWAPI) by Artikunazo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
 

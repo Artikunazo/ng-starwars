@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fender-test": {
+    "ng-starwars": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fender-test",
+            "outputPath": "dist/ng-starwars",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "fender-test:build"
+            "browserTarget": "ng-starwars:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "fender-test:build:production"
+              "browserTarget": "ng-starwars:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fender-test:build"
+            "browserTarget": "ng-starwars:build"
           }
         },
         "test": {
@@ -116,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "fender-test:serve"
+            "devServerTarget": "ng-starwars:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "fender-test:serve:production"
+              "devServerTarget": "ng-starwars:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "fender-test"
+  "defaultProject": "ng-starwars"
 }

@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/fender-test'),
+      dir: require('path').join(__dirname, './coverage/ng-starwars'),
       subdir: '.',
       reporters: [
         { type: 'html' },
