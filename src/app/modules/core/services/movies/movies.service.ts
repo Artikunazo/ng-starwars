@@ -42,6 +42,10 @@ export class MoviesService {
     });
   }
 
+  getFilmByUrl(movieUrl: string) {
+    return this.http.get<MovieModel>(movieUrl);
+  }
+
   setMovieByTitle(movieTitle: string) {
     this._commonService.getItemByName('films', movieTitle)
     .subscribe((movies: MovieModel) => {

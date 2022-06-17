@@ -17,9 +17,10 @@
       "dom"
     ],
     "paths": {
-      "@core/*": ["src/app/core/*"],
-      "@material/*": ["src/app/material/*"],
-      "@shared/*": ["src/app/shared/*"]
+      "@core/*": ["src/app/modules/core/*"],
+      "@material/*": ["src/app/modules/shared/material/*"],
+      "@shared/*": ["src/app/modules/shared/*"],
+      "@modules/*": ["src/app/modules/*"],
     },
   },
   "angularCompilerOptions": {

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CharacterModel } from 'src/app/core/models/character.model';
+import { CharacterModel } from '@core/models/character.model';
 
 import { MoviesService } from '@core/services/movies/movies.service';
 import { CharactersService } from '@core/services/characters/characters.service';

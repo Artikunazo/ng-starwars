@@ -5,14 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from '@core/core.module';
-import { MaterialModule } from '@material/material.module';
-import { NavigationComponent } from '@shared/navigation/navigation.component';
+import { CoreModule } from '@modules/core/core.module';
+import { SharedModule } from '@modules/shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
+    // NavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +19,7 @@ import { NavigationComponent } from '@shared/navigation/navigation.component';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    MaterialModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

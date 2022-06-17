@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NavigationComponent } from '@shared/navigation/navigation.component';
+import { NavigationComponent } from '@modules/shared/navigation/navigation.component';
 
 const routes: Routes = [
   {
@@ -16,24 +16,24 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () =>
-          import('./movies/movies.module').then((m) => m.MoviesModule),
+          import('@modules/movies/movies.module').then((m) => m.MoviesModule),
       },
       {
         path: 'movie/:title',
         loadChildren: () =>
-          import('./movie-details/movie-details.module').then(
+          import('@modules/movie-details/movie-details.module').then(
             (m) => m.MovieDetailsModule
           ),
       },
       {
         path: 'character/:name',
         loadChildren: () =>
-          import('./character/character.module').then((m) => m.CharacterModule),
+          import('@modules/character/character.module').then((m) => m.CharacterModule),
       },
       {
         path: '**',
         loadChildren: () =>
-          import('./error/error.module').then((m) => m.ErrorModule),
+          import('@modules/shared/error/error.module').then((m) => m.ErrorModule),
       },
     ],
   },
